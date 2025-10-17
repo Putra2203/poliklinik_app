@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('jadwal_periksa', function (Blueprint $table) {
@@ -16,5 +19,14 @@ return new class extends Migration
             $table->time('jam_selesai');
             $table->timestamps();
         });
+    }
+
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('jadwal_periksa');
     }
 };

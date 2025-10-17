@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('periksa', function (Blueprint $table) {
@@ -16,5 +19,14 @@ return new class extends Migration
             $table->integer('biaya_periksa');
             $table->timestamps();
         });
-    }    
+    }
+
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('periksa');
+    }
 };
