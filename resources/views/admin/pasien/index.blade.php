@@ -1,4 +1,4 @@
-<x-layouts.app title="Data Dokter">
+<x-layouts.app title="Data Pasien">
     <div class="container-fluid px-4 mt-4">
         <div class="row">
             <div class="col-lg-12">
@@ -11,48 +11,40 @@
                     </div>
                 @endif
 
-                <h1 class="mb-4">Data Dokter</h1>
+                <h1 class="mb-4">Data Pasien</h1>
 
-                <a href="{{ route('dokter.create') }}" class="btn btn-primary mb-3">
-                    <i class="fas fa-plus"></i> Tambah dokter
+                <a href="{{ route('pasien.create') }}" class="btn btn-primary mb-3">
+                    <i class="fas fa-plus"></i> Tambah Pasien
                 </a>
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead class="thead-light">
                             <tr>
-                                <th>No</th>
-                                <th>Nama</th>
+                                <th>Nama Pasien</th>
                                 <th>Email</th>
                                 <th>No. KTP</th>
-                                <th>No. HP</th>
+                                <th>NO. HP</th>
                                 <th>Alamat</th>
-                                <th>Poli</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($dokters as $index => $dokter )
+                            @forelse ($pasiens as $pasien )
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $dokter->nama }}</td>
-                                    <td>{{ $dokter->email }}</td>
-                                    <td>{{ $dokter->no_ktp }}</td>
-                                    <td>{{ $dokter->no_hp }}</td>
-                                    <td>{{ $dokter->alamat }}</td>
+                                    <td>{{ $pasien->nama }}</td>
+                                    <td>{{ $pasien->email }}</td>
+                                    <td>{{ $pasien->no_ktp }}</td>
+                                    <td>{{ $pasien->no_hp }}</td>
+                                    <td>{{ $pasien->alamat }}</td>
                                     <td>
-                                        <span class="badge bg-info">
-                                            {{ $dokter->poli->nama_poli ?? 'Belum Di pilih' }}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('dokter.edit', $dokter->id) }}" class="btn btn-sm btn-warning">
-                                            <i class="fas fa-edit"></i> Edit
+                                        <a href="{{ route('pasien.edit', $pasien->id) }}" class="btn btn-sm btn-warning">
+                                            <i class="fas fa-edit"></i>Edit
                                         </a>
-                                        <form action="{{ route('dokter.destroy', $dokter->id) }}" method="POST" style="display: inline-block;">
+                                        <form action="{{ route('pasien.destroy', $pasien->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus dokter ini ?')">
+                                            <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus pasien ini ?')">
                                                 <i class="fas fa-trash"></i> Hapus
                                             </button>
                                         </form>
@@ -60,8 +52,8 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-center" colspan="8">
-                                        Belum ada Dokter
+                                    <td class="text-center" colspan="7">
+                                        Belum ada Pasien
                                     </td>
                                 </tr>
                             @endforelse
