@@ -1,4 +1,3 @@
-
 {{-- <h2>Login</h2> --}}
 {{--
 @if ($errors->any())
@@ -63,6 +62,3 @@
         </div>
     </div>
 </x-layouts.guest>
-loginh.txt
-Eksternal
-Menampilkan loginh.txt.
