@@ -12,8 +12,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="nama_obat" class="form-label">Nama Obat <span
-                                                class="text-danger">*</span></label>
+                                        <label for="nama_obat" class="form-label">Nama Obat <span class="text-danger">*</span></label>
                                         <input type="text" 
                                             name="nama_obat" 
                                             id="nama_obat"
@@ -27,8 +26,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="kemasan" class="form-label">Kemasan <span
-                                                class="text-danger">*</span></label>
+                                        <label for="kemasan" class="form-label">Kemasan <span class="text-danger">*</span></label>
                                         <input type="text" 
                                             name="kemasan" 
                                             id="kemasan"
@@ -43,25 +41,46 @@
                                 </div>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label for="harga" class="form-label">Harga <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" 
-                                    name="harga" 
-                                    id="harga"
-                                    class="form-control @error('harga') is-invalid @enderror" 
-                                    value="{{ old('harga', $obat->harga) }}"
-                                    required 
-                                    min="0" 
-                                    step="1">
-                                @error('harga')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="harga" class="form-label">Harga <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Rp</span>
+                                            <input type="number" 
+                                                name="harga" 
+                                                id="harga"
+                                                class="form-control @error('harga') is-invalid @enderror" 
+                                                value="{{ old('harga', $obat->harga) }}"
+                                                required 
+                                                min="0">
+                                        </div>
+                                        @error('harga')
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="stok" class="form-label">Stok <span class="text-danger">*</span></label>
+                                        <input type="number" 
+                                            name="stok" 
+                                            id="stok"
+                                            class="form-control @error('stok') is-invalid @enderror" 
+                                            value="{{ old('stok', $obat->stok) }}"
+                                            required 
+                                            min="0">
+                                        @error('stok')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-save"></i> Update
+                            <div class="form-group mt-4">
+                                <button type="submit" class="btn btn-warning text-white">
+                                    <i class="fas fa-save"></i> Update Data
                                 </button>
                                 <a href="{{ route('obat.index') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> Kembali

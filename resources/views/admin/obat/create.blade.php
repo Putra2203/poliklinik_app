@@ -12,8 +12,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group mb-3">
-                                        <label for="nama_obat" class="form-label">Nama Obat <span
-                                                class="text-danger">*</span></label>
+                                        <label for="nama_obat" class="form-label">Nama Obat <span class="text-danger">*</span></label>
                                         <input type="text" 
                                             name="nama_obat" 
                                             class="form-control @error('nama_obat') is-invalid @enderror"
@@ -42,25 +41,47 @@
                                 </div>
                             </div>
 
-                            <div class="form-group mb-3">
-                                <label for="harga" class="form-label">Harga <span
-                                        class="text-danger">*</span></label>
-                                <input type="number" 
-                                    name="harga" 
-                                    id="harga"
-                                    class="form-control @error('harga') is-invalid @enderror" 
-                                    value="{{ old('harga') }}"
-                                    min="0" 
-                                    step="1" 
-                                    required>
-                                @error('harga')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="harga" class="form-label">Harga <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Rp</span>
+                                            <input type="number" 
+                                                name="harga" 
+                                                id="harga"
+                                                class="form-control @error('harga') is-invalid @enderror" 
+                                                value="{{ old('harga') }}"
+                                                min="0" 
+                                                required>
+                                        </div>
+                                        @error('harga')
+                                            <div class="invalid-feedback d-block">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="stok" class="form-label">Stok Awal <span class="text-danger">*</span></label>
+                                        <input type="number" 
+                                            name="stok" 
+                                            id="stok"
+                                            class="form-control @error('stok') is-invalid @enderror" 
+                                            value="{{ old('stok', 0) }}"
+                                            min="0" 
+                                            required>
+                                        <small class="text-muted">Masukkan jumlah stok fisik saat ini.</small>
+                                        @error('stok')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group mt-4">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-save"></i> Simpan
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Simpan Data
                                 </button>
                                 <a href="{{ route('obat.index') }}" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left"></i> Kembali
